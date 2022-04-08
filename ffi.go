@@ -5,7 +5,7 @@ import (
 	"os"
 	"unsafe"
 
-	"github.com/application-research/filecoin-ffiswap-liteclient/cgo"
+	"github.com/filecoin-project/filecoin-ffi/cgo"
 	"github.com/filecoin-project/go-state-types/abi"
 	"github.com/filecoin-project/go-state-types/network"
 	"github.com/filecoin-project/specs-actors/v7/actors/runtime/proof"
@@ -32,6 +32,19 @@ type FVMOpts struct {
 	StateBase      cid.Cid
 	Manifest       cid.Cid
 }
+
+type ApplyRet struct {
+	Return       []byte
+	ExitCode     uint64
+	GasUsed      int64
+	MinerPenalty abi.TokenAmount
+	MinerTip     abi.TokenAmount
+}
+
+func CreateFVM(opts *FVMOpts) (*FVM, error)                                   { return nil, nil }
+func (f *FVM) ApplyMessage(msgBytes []byte, chainLen uint) (*ApplyRet, error) { return nil, nil }
+func (f *FVM) ApplyImplicitMessage(msgBytes []byte) (*ApplyRet, error)        { return nil, nil }
+func (f *FVM) Flush() (cid.Cid, error)                                        { return cid.Undef, nil }
 
 type SortedPrivateSectorInfo struct{ abi.SectorNumber }
 type PrivateSectorInfo struct {
